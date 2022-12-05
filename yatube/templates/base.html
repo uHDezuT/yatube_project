@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Социальная сеть для блогеров(несуществующих :D)
+        {% endblock %}</title>
+</head>
+<body>
+    {% include 'includes/nav.html' %}
+    <main>
+        <div class="container">
+            <h1>{% include 'includes/header.html' %}</h1>
+            {% block content %}
+            Первая публикация
+            {% endblock %}
+        </div>
+    </main>
+    {% include 'includes/footer.html' %}
+</body>
+
+</html>
