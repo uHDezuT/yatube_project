@@ -10,7 +10,10 @@ class PostAdmin(admin.ModelAdmin):
         'text',
         'pub_date',
         'author',
+        'group',
     )
+    # Содержимое поля group можно редактировать в админке
+    list_editable = ('group',)
     # Добавляем интерфейс для поиска по тексту постов
     search_fields = ('text',)
     # Добавляем возможность фильтрации по дате
