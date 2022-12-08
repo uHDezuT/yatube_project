@@ -4,14 +4,27 @@ from django.db import models
 User = get_user_model()
 
 
+class Group(models.Model):
+    title = models.CharField(max_length=200)
+    slug = models.SlugField(unique=True)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.title
+
+
 class Post(models.Model):
-    text = models.TextField()
-    pub_date = models.DateTimeField(auto_now_add=True)
+    text = models.TextField(
+        'Текст поста',
+        help_text='Введите текст поста'
+    )
+    pub_date = models.DateTimeField(
+        'Дата публикации',
+        auto_now_add=True
+    )
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-        related_name='posts'  # в каждом объекте модели User автоматически
-        # будет создано свойство с таким же названием
-        # (posts), и в нём будут храниться ссылки на все объекты модели Post,
-        # которые ссылаются на объект User.
+        related_name='posts',
+        verbose_name='Автор'
     )
